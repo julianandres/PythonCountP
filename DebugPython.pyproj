@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>3d64536f-10bd-405e-a5ef-5f6ce13cee9f</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>Count.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>DebugPython</Name>
+    <RootNamespace>DebugPython</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="bordesYrgb.py" />
+    <Compile Include="CannyStill.py" />
+    <Compile Include="cannyWebcam.py" />
+    <Compile Include="circulos.py" />
+    <Compile Include="contour_only.py" />
+    <Compile Include="Count.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DebugPython.py" />
+    <Compile Include="detectarcolores.py" />
+    <Compile Include="detectCirculos.py" />
+    <Compile Include="gesture.py" />
+    <Compile Include="monedas.py" />
+    <Compile Include="NDVI.py" />
+    <Compile Include="operadores.py" />
+    <Compile Include="plantDetect.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="redballtracker.py" />
+    <Compile Include="valoresumbral.py" />
+    <Compile Include="videocapture.py" />
+    <Compile Include="videocaptureRGB.py" />
+    <Compile Include="watershed.py" />
+    <Compile Include="watershed2.py" />
+    <Compile Include="whtshcoins.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />
+  <Import Condition="!Exists($(PtvsTargetsFile))" Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

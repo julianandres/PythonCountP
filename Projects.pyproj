@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{c7ef5f40-d2c9-4463-a357-a0162d85e5dc}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>NDVI.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <InterpreterVersion />
+    <IsWindowsApplication>False</IsWindowsApplication>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="ejemplo1\ejemplo1\coins.jpg" />
+    <Content Include="ejemplo1\ejemplo1\image.jpg" />
+    <Content Include="ejemplo1\ejemplo1\raspberrypi.png" />
+    <Content Include="image1.jpg" />
+    <Content Include="image2.jpg" />
+    <Content Include="img3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ejemplo1\ejemplo1\bordesYrgb.py" />
+    <Compile Include="ejemplo1\ejemplo1\CannyStill.py" />
+    <Compile Include="ejemplo1\ejemplo1\cannyWebcam.py" />
+    <Compile Include="ejemplo1\ejemplo1\circulos.py" />
+    <Compile Include="ejemplo1\ejemplo1\detectarcolores.py" />
+    <Compile Include="ejemplo1\ejemplo1\detectCirculos.py" />
+    <Compile Include="ejemplo1\ejemplo1\ejemplo1.py" />
+    <Compile Include="ejemplo1\ejemplo1\gesture.py" />
+    <Compile Include="ejemplo1\ejemplo1\monedas.py" />
+    <Compile Include="ejemplo1\ejemplo1\operadores.py" />
+    <Compile Include="ejemplo1\ejemplo1\redballtracker.py" />
+    <Compile Include="ejemplo1\ejemplo1\valoresumbral.py" />
+    <Compile Include="ejemplo1\ejemplo1\videocapture.py" />
+    <Compile Include="ejemplo1\ejemplo1\videocaptureRGB.py" />
+    <Compile Include="ejemplo1\ejemplo1\watershed.py" />
+    <Compile Include="bordesYrgb.py" />
+    <Compile Include="CannyStill.py" />
+    <Compile Include="cannyWebcam.py" />
+    <Compile Include="circulos.py" />
+    <Compile Include="detectarcolores.py" />
+    <Compile Include="detectCirculos.py" />
+    <Compile Include="gesture.py" />
+    <Compile Include="monedas.py" />
+    <Compile Include="operadores.py" />
+    <Compile Include="NDVI.py" />
+    <Compile Include="redballtracker.py" />
+    <Compile Include="valoresumbral.py" />
+    <Compile Include="videocapture.py" />
+    <Compile Include="videocaptureRGB.py" />
+    <Compile Include="watershed.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ejemplo1\" />
+    <Folder Include="ejemplo1\ejemplo1" />
+    <Folder Include="PythonApplication1\" />
+    <Folder Include="PythonApplication1\PythonApplication1" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>
