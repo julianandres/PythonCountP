@@ -25,7 +25,7 @@ cv2.imshow('Thresholded', th1)
 #closing = cv2.morphologyEx(th1,cv2.MORPH_CLOSE,kernel3, iterations = 3)
 opening = cv2.morphologyEx(th1,cv2.MORPH_OPEN,kernel, iterations = 3)#transformacion morfologica para eliminar ruido
 #opening = cv2.GaussianBlur(opening,(5,5),0)
-closing = cv2.morphologyEx(opening,cv2.MORPH_CLOSE,kernel3, iterations = 3)#transformacion morfologica para eliminar ruido
+closing = cv2.morphologyEx(opening,cv2.MORPH_CLOSE,kernel3, iterations = 4)#transformacion morfologica para eliminar ruido
 erosion = cv2.erode(closing,kernel2,iterations = 2)
 cv2.imshow('Thresholded con MorphologyExopen', opening)
 cv2.imwrite('thwmopen.jpg',opening)

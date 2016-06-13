@@ -82,7 +82,6 @@ for label in np.unique(markers):
 	   radios[i]= r
  	i=i+1
 
-
 print radios
 acumulado=0
 denominador=0
@@ -134,8 +133,6 @@ for label in np.unique(markers):
 	cv2.circle(imgOriginal, (int(x), int(y)), int(r), (0, 255, 0), 2)
 	cv2.putText(imgOriginal, "#{}".format(label), (int(x) - 10, int(y)),
 		cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
-
-
 cv2.imshow('maskSuperior',mascaraSuperior)
 cv2.imshow('maskInferior',mascaraInferior)
 ################################################################################################################
@@ -145,7 +142,7 @@ opening1 = cv2.morphologyEx(mascaraSuperior,cv2.MORPH_OPEN,kernel, iterations = 
 erosion1 = cv2.erode(opening1,kernel2,iterations = 2)
 #cv2.imshow('posProcessed con MorphologyExopen', opening1)
 #cv2.imshow('Thresholded con morphologyex+open,close', opening)
-#cv2.imshow('post processed con morphologyex+erode', erosion1)
+cv2.imshow('post processed con morphologyex+erode', erosion1)
 ##################################################################################################################
 
 
