@@ -15,7 +15,7 @@ value = (35, 35)
 _,th1 = cv2.threshold(img, 0, 255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 
 #cv2.imshow('imgRed',r)
-kernel = np.ones((10,10),np.uint8)
+kernel = np.ones((4,2),np.uint8)
 kernel2 = np.ones((5,5),np.uint8)
 kernel3 = np.ones((2,2),np.uint8)
 
@@ -23,17 +23,15 @@ cv2.imshow('Thresholded', th1)
 ##############################
 
 #closing = cv2.morphologyEx(th1,cv2.MORPH_CLOSE,kernel3, iterations = 3)
-opening = cv2.morphologyEx(th1,cv2.MORPH_OPEN,kernel, iterations = 2)#transformacion morfologica para eliminar ruido
+opening = cv2.morphologyEx(th1,cv2.MORPH_OPEN,kernel, iterations = 6)#transformacion morfologica para eliminar ruido
 #opening = cv2.GaussianBlur(opening,(5,5),0)
 #closing = cv2.morphologyEx(opening,cv2.MORPH_CLOSE,kernel3, iterations = 3)#transformacion morfologica para eliminar ruido
 erosion = cv2.erode(opening,kernel2,iterations = 2)
 cv2.imshow('Thresholded con MorphologyExopen', opening)
+cv2.imwrite('thwmopen.jpg',opening)
 #cv2.imshow('Thresholded con morphologyex+open,close', opening)
 cv2.imshow('Thresholded con morphologyex+erode', erosion)
 #######################################
-
-
-
 
 sure_bg = cv2.dilate(erosion,kernel3,iterations=3)
 dist_transform = cv2.distanceTransform(erosion,cv2.DIST_L2,5)
@@ -58,12 +56,11 @@ markers = cv2.watershed(imgOriginal,markers)
 print("[INFO] {} unique segments found".format(len(np.unique(markers)) - 1))
 ####################################################################3
 radios = np.zeros(len(np.unique(markers)),dtype='Float64')
-
-
+print radios.shape
+i=0
 for label in np.unique(markers):
 	# if the label is zero, we are examining the 'background'
 	# so simply ignore it
-
 	if label == 0:
 		continue
 	
@@ -71,7 +68,9 @@ for label in np.unique(markers):
 	# it on the mask
 	mascara1 = np.zeros(grey.shape, dtype="uint8")
 	mascara1[markers == label] = 255
- 
+        #print i
+        print str(i)+"i"
+ 	print str(label)+"label"
         # print radio
 	# detect contours in the mask and grab the largest one
 	cnts = cv2.findContours(mascara1.copy(), cv2.RETR_EXTERNAL,
@@ -80,7 +79,8 @@ for label in np.unique(markers):
 	# draw a circle enclosing the object
 	((x, y), r) = cv2.minEnclosingCircle(c)
         if label>0 and label!=1 :
-	   radios[label]= r
+	   radios[i]= r
+ 	i=i+1
 
 
 print radios
@@ -137,15 +137,15 @@ for label in np.unique(markers):
 
 
 cv2.imshow('maskSuperior',mascaraSuperior)
-#cv2.imshow('maskInferior',mascaraInferior)
+cv2.imshow('maskInferior',mascaraInferior)
 ################################################################################################################
 opening1 = cv2.morphologyEx(mascaraSuperior,cv2.MORPH_OPEN,kernel, iterations = 2)#transformacion morfologica para eliminar ruido
 #opening = cv2.GaussianBlur(opening,(5,5),0)
 #closing = cv2.morphologyEx(opening,cv2.MORPH_CLOSE,kernel3, iterations = 3)#transformacion morfologica para eliminar ruido
 erosion1 = cv2.erode(opening1,kernel2,iterations = 2)
-cv2.imshow('posProcessed con MorphologyExopen', opening1)
+#cv2.imshow('posProcessed con MorphologyExopen', opening1)
 #cv2.imshow('Thresholded con morphologyex+open,close', opening)
-cv2.imshow('post processed con morphologyex+erode', erosion1)
+#cv2.imshow('post processed con morphologyex+erode', erosion1)
 ##################################################################################################################
 
 
