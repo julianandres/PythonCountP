@@ -15,7 +15,7 @@ value = (35, 35)
 _,th1 = cv2.threshold(img, 0, 255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 
 #cv2.imshow('imgRed',r)
-kernel = np.ones((4,2),np.uint8)
+kernel = np.ones((6,3),np.uint8)
 kernel2 = np.ones((5,5),np.uint8)
 kernel3 = np.ones((2,2),np.uint8)
 
@@ -25,12 +25,12 @@ cv2.imshow('Thresholded', th1)
 #closing = cv2.morphologyEx(th1,cv2.MORPH_CLOSE,kernel3, iterations = 3)
 opening = cv2.morphologyEx(th1,cv2.MORPH_OPEN,kernel, iterations = 3)#transformacion morfologica para eliminar ruido
 #opening = cv2.GaussianBlur(opening,(5,5),0)
-#closing = cv2.morphologyEx(opening,cv2.MORPH_CLOSE,kernel3, iterations = 3)#transformacion morfologica para eliminar ruido
-erosion = cv2.erode(opening,kernel2,iterations = 2)
+closing = cv2.morphologyEx(opening,cv2.MORPH_CLOSE,kernel3, iterations = 4)#transformacion morfologica para eliminar ruido
+erosion = cv2.erode(closing,kernel2,iterations = 2)
 cv2.imshow('Thresholded con MorphologyExopen', opening)
 cv2.imwrite('thwmopen.jpg',opening)
-#cv2.imshow('Thresholded con morphologyex+open,close', opening)
-cv2.imshow('Thresholded con morphologyex+erode', erosion)
+cv2.imshow('Thresholded con morphologyex close', closing)
+cv2.imshow('Thresholded con morphologyex erode', erosion)
 #######################################
 
 sure_bg = cv2.dilate(erosion,kernel3,iterations=3)
